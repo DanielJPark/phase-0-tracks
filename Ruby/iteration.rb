@@ -1,9 +1,12 @@
-# def take_block
-# 	puts "this takes a block"
-# 	yield("test1", "test2")
-# end
+#release 0
 
-# take_block { |p1, p2| puts "this is the block #{p1} and #{p2}"}
+def take_block
+	puts "This method takes a block..."
+	yield("Test1", "Test2")
+end
+
+
+take_block { |p1, p2| puts "#{p1} and #{p2} are from the block"}
 
 =begin
 Practice 
@@ -39,7 +42,7 @@ p modified_letters
 =end
 
 
-
+#release 1
 superheros = ["Superman", "Batman", "Wonder Woman", "Green Lantern"]
 soccer_team = {"striker": 2, "midfield": 4, "fullback": 4, "goalies": 1}
 justice_league = []
@@ -100,6 +103,30 @@ superheros.map! do |name|
 end
 
 p superheros
+
+#release 2
+
+def delete_5 ()
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
