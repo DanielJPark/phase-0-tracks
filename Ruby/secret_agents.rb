@@ -88,7 +88,9 @@ def encrypt(string)
 	encrypted_string = ""
 	until i == string.length
 		#p string[i].next
-		if string[i] == "z"
+		if string[i] == " "
+			encrypted_string += " "
+		elsif string[i] == "z"
 			encrypted_string += "a"
 		elsif string[i] == "Z"
 			encrypted_string += "A"
@@ -107,7 +109,9 @@ def decrypt(string)
 	i = 0
 	decrypted_string = ""
 	until i == string.length
-		if string[i] == "a"
+		if string[i] == " "
+			decrypted_string += " "
+		elsif string[i] == "a"
 			decrypted_string += "z"
 		elsif string[i] == "A"
 			decrypted_string += "Z"
