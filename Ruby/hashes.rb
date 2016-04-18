@@ -41,10 +41,11 @@ new_client[:children] = gets.chomp.downcase
 p "Please enter your email address"
 new_client[:email] = gets.chomp.to_s
 
-p new_client
+
 
 correct = "n"
 while correct == "n"
+p new_client
 p "Is all of your information correct?(y/n)"
 	correct = gets.chomp.downcase
 		if correct == "n"			
@@ -87,11 +88,9 @@ p "Is all of your information correct?(y/n)"
 				p "Please enter your email address"
 				new_client[:email] = gets.chomp.to_s	
 			end
-		else
-			break
 		end		
 end
-p new_client
+
 
 p "Thank you #{new_client[:name]}, we will contact you shortly via email." 
 
