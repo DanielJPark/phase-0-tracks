@@ -1,40 +1,48 @@
 #release 2
 
-def build_array(item1, item2, item3)
-	array = [item1, item2, item3]
+def build_array(var1, var2, var3)
+	array = []
+	array << var1 << var2 << var3
 end
 
-p build_array(1,2,3)
-
-def add_to_array(item1, item2)
-	item1 << item2
+def add_to_array(array, var)
+	array<< var
 end
-
-p add_to_array([],"a")
-p add_to_array(["a", "b", "c", 1, 2], 3)
 
 #release 1
 
-array1 = []
-p array1
+array = []
+p array
 
-array1 << 1 << 2 << 3 << 4 <<5
-p array1
+array << "1" << "2" << "3" << "4" << "5"
+p array
 
-array1.delete_at(2)
-p array1
+array.delete_at(2)
+p array
 
-array1.insert(2, "3b")
-p array1
+array.insert(2, "3b")
+p array
 
-if array1.include?(4)
-	p "This contains a 4"
+array.shift
+p array
+
+looking_for = "4"
+
+if array.include? looking_for 
+	p "Yes, array contains #{looking_for}"
 end
 
-array2 = [6,7,8]
 
-array3 = array1 + array2
+array2 = ["6","7","8","9"]
+
+array3 = array + array2
 p array3
 
+
 #release 2
+
+p build_array(1, "two", nil)
+p add_to_array(["a","b","c",1,2], 3)
+p add_to_array([],"a")
+p add_to_array([2],2)
 
