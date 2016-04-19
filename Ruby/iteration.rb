@@ -1,132 +1,92 @@
-#release 0
+# release 1
 
-def take_block
-	puts "This method takes a block..."
-	yield("Test1", "Test2")
+# each
+marvel_movies = ["Ironman", "Captain America", "Thor", "Avengers", "Ant-Man"]
+back_to_the_future = {
+	"Marty McFly": "Michael J Fox",
+	"Doc Brown": "Christopher Lloyd",
+	"Lorraine Baines": "Lea Thompson",
+	"George McFly": "Crispin Glover",
+	"Biff Tannen": "Thomas F Wilson",
+}
+
+marvel_movies.each do |title|
+	p title
+end
+
+back_to_the_future.each do |role, actor|
+	p "#{role} played by #{actor}"
+end
+
+back_to_the_future.each do |role, actor|
+	p "Starring #{actor}"
+end
+
+#map
+
+updated_marvel_movies = marvel_movies.map do |movie|
+	movie + " was a great movie"
+end
+
+p marvel_movies
+p updated_marvel_movies
+#p updated_marvel_movies
+
+roles = back_to_the_future.map do |role, actor|
+	p "#{role} played by #{actor}"
 end
 
 
-take_block { |p1, p2| puts "#{p1} and #{p2} are from the block"}
+p roles
 
-=begin
-Practice 
 
-letters = ["a", "b", "c", "d", "e"]
+#map!
 
-puts "original data:"
-p letters
-
-letters.each do |letter| 
-	puts letter
-	
+marvel_movies.map! do |movie|
+	p movie + " by Marvel Studios"
+	"#{movie} produced by Marvel"
 end
 
-puts "After .each call"
-p letters
-
-
-letters = ["a", "b", "c", "d", "e"]
-
-puts "original data:"
-p letters
-
-letters.map! do |letter| 
-	puts letter
-	letter.next
-end
-
-puts "After .map call"
-p letters
-p modified_letters
-
-=end
-
-
-#release 1
-superheros = ["Superman", "Batman", "Wonder Woman", "Green Lantern"]
-soccer_team = {"striker": 2, "midfield": 4, "fullback": 4, "goalies": 1}
-justice_league = []
-
-
-#.each method
-p "superheros and justice_league before .each"
-p superheros
-p justice_league
-
-superheros.each do |name|
-	p name
-end
-
-superheros.each do |name|
-	justice_league << name + " is a member of the Justice League."
-end	
-
-justice_league.each do |member|
-	p member
-end
-
-p "superheros and justice_league after .each"
-p superheros
-p justice_league
-
-p "soccer_team before .each"
-p soccer_team
-
-
-soccer_team.each do |position, on_field|
-	p "There are #{on_field} #{position} playing."
-end
+p marvel_movies
 
 
 
-
-p "soccer_team after .each"
-p soccer_team
+# release 2
 
 
+#1
 
-# .map method
-
-justice_league = superheros.map do |codename|
-	p codename
-	codename + "'s realname is unknown"
-end
-
-p superheros
-p justice_league
+numbers = [ 1, 4, 7, 3, 8, 9, 10, 2]
 
 
+p numbers.delete_if {|number| number < 5}
 
-superheros.map! do |name|
-	p name 
-	name + " has a secret identity!"
-end
+letters = {"a": 1, "b": 2, "c": 3, "d": 4}
 
-p superheros
+p letters.delete_if {|letter, num| num > 2}
 
-#release 2
 
-def delete_5 ()
+#2
+numbers = [ 1, 4, 7, 3, 8, 9, 10, 2]
+p numbers.keep_if {|number| number < 5}
 
-end
+letters = {"a": 1, "b": 2, "c": 3, "d": 4}
+p letters.keep_if {|letter, num| num.even?}
 
 
 
+#3
 
+more_numbers = [32,46,2,3,6,7,4,8,9,22,5]
+p more_numbers.select {|num| num.odd? }
 
+letters = {"a": 1, "b": 2, "c": 3, "d": 4}
+p letters.select {|letter, num| num.odd?}
 
+#4
+more_numbers = [32,46,2,3,6,7,4,8,9,22,5]
 
+p more_numbers.reject{|even_num| even_num % 2 == 0}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+letters = {"a": 1, "b": 2, "c": 3, "d": 4}
+p letters.reject {|letter, num| num <= 2}
