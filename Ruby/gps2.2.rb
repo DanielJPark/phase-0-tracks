@@ -39,7 +39,7 @@
 # steps: define a method thats takes 2 parameters.. the hash and a title. Print the Title first. Print each Hash Key, then print each Hash Value on their own respective line.
 # output: displaying list...
 
-#Release2
+#Release2-4
 
 def print_list(list, title)
   puts title
@@ -83,4 +83,33 @@ this_list = update_quantity("milk", 3, this_list)
 
 
 this_list = print_list(this_list, "Andrea's Grocery Shopping List")
+
+
+#Release 5 - Relection
+
+
+# What did you learn about pseudocode from working on this challenge?
+
+#   Pseudocode is something I definitely struggle with but from this challenge I learned how it actually is very useful and helpful when writing out the actualy code! With my pair I found that pseudocoding actually took up the majoring of our time. Once the pseudocode was effectively written, writing the actual code was very easy!.
+
+# What are the tradeoffs of using arrays and hashes for this challenge?
+
+#   With Hashes the ability to set keys with values was very helpful for this specific challenge. It made updating quantities and removing items very simple. Arrays having only objects that refer to an index id would have limited what were trying to do.
+
+# What does a method return?
+
+#   A method returns processed data based off of data that you input.
+
+# What kind of things can you pass into methods as arguments?
+
+#   Anything. Strings, Integers, Floats, Arrays, Hashes, even other methods.
+
+# How can you pass information between methods?
+
+#   Yes. Using * and & makes it possible.
+
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+
+#   The order in which you define methods effects how they run. This challenge helped me a lot with my coding logic. It also helped solify my understanding of working with hashes. I also learned how to pseudocode more effectively.
+
   
