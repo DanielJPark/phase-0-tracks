@@ -21,10 +21,10 @@ function Car(make, model, year){
 	this.model = model;
 	this.year = year;
 
-	this.drive = function() {console.log("zooom!!!");};
-	this.stop = function() {console.log("skreech!!!");};
-	this.crash = function() {console.log("smassshhhhh!!");};
-	console.log("Car has been completed!");
+	this.drive = function() {console.log("Your "+make+" "+model+" goes zooom!!!");};
+	this.stop = function() {console.log("Stop! The "+make+" "+model+" goes skreech!!!");};
+	this.crash = function() {console.log("Smassshhhhh!! Your "+make+" "+model+" has crashed!");};
+	console.log("Your car is a "+ make +" "+model+" made in "+year+".");
 }
 	
 
