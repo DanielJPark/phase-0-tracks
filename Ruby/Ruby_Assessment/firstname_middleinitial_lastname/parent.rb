@@ -26,6 +26,12 @@ class Parent
 		end
 	end
 
+	def display_request_history
+		@past_requests.each do |request, answer|
+			puts "The child's request: #{request}, was #{answer}"
+		end
+	end
+
 end
 
 
@@ -36,5 +42,19 @@ bob = Parent.new("Bob", 6)
 mary = Parent.new("Mary", 4)
 bob.greet_child
 
-p bob.hear_request("Can I get a toy today")
-p bob.hear_request("I would like to to go the movies today and shopping afterwards.")
+#p bob.hear_request("Can I get a toy today")
+#p bob.hear_request("I would like to to go the movies today and shopping afterwards.")
+
+
+common_requests= ["Can we go shopping", "Feed me", "Can I go to Johnny's house today", "buy me toy", "Can I have this please"]
+
+common_requests.each do |request|
+	bob.hear_request(request)
+end
+
+common_requests.each do |request|
+	mary.hear_request(request)
+end
+
+
+bob.display_request_history
