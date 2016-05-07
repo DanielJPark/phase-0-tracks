@@ -5,6 +5,7 @@ class Parent
 	def initialize(name, hours_slept)
 		@name = name
 		@hours_slept = hours_slept
+		@past_requests = {}
 	end
 
 	def greet_child
