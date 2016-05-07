@@ -57,7 +57,9 @@ end
 
 
 # #driver code
-
+# bob = Parent.new(bob,6)
+# p bob.drink_coffee
+# p bob.take_nap
 # bob = Parent.new("Bob", 6)
 # mary = Parent.new("Mary", 4)
 # bob.greet_child
