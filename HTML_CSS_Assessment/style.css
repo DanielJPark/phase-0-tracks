@@ -1,0 +1,14 @@
+*{
+	font-family: TimesNewRoman, helvetica;
+	background-color: gray;
+	color: yellow;
+}
+
+h2 {
+	font-family: cursive, helvetica;
+}
+
+p {
+	font-family: Arial, Impact;
+	color: orange;
+}
