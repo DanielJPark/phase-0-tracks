@@ -1,0 +1,43 @@
+1. You've joined two tables before. How do you join three?
+
+command:
+
+SELECT * FROM users, reviews, businesses WHERE reviews.business_id = businesses.id AND reviews.user_id = users.id;
+
+output:
+
+id          first_name  last_name   id          stars       comments             business_id  user_id     id          name
+----------  ----------  ----------  ----------  ----------  -------------------  -----------  ----------  ----------  ----------------------------
+3           Angela      Jolie       1           3           good but overpriced  1            3           1           Grundy Hollow Wedding Chapel
+2           Mandy       Kaling      2           4           EXCELLENT!!!         2            2           2           Amir's Towing
+1           Bradford    Pitt        3           2           just ok              3            1           3           The Beagle Nightclub
+
+
+2. There are some repetitive columns if we choose to view all fields. Choose instead to just view the user's names, the business name, the star rating, and the comment.
+
+command:
+
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comments FROM reviews JOIN users, businesses ON reviews.business_id = businesses.id AND reviews.user_id = users.id;
+
+output:
+
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comments FROM reviews JOIN users, businesses ON reviews.business_id = businesses.id AND reviews.user_id = users.id;
+first_name  last_name   name                          stars       comments
+----------  ----------  ----------------------------  ----------  -------------------
+Angela      Jolie       Grundy Hollow Wedding Chapel  3           good but overpriced
+Mandy       Kaling      Amir's Towing                 4           EXCELLENT!!!
+Bradford    Pitt        The Beagle Nightclub          2           just ok
+
+
+3. How do you view the data of all three tables for just one particular business?
+
+command:
+
+SELECT * FROM users, reviews, businesses WHERE reviews.business_id = 2 AND reviews.user_id = users.id AND reviews.business_id = businesses.id;
+
+output:
+
+id          first_name  last_name   id          stars       comments      business_id  user_id     id          name
+----------  ----------  ----------  ----------  ----------  ------------  -----------  ----------  ----------  -------------
+2           Mandy       Kaling      2           4           EXCELLENT!!!  2            2           2           Amir's Towing
+
