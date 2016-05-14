@@ -1,0 +1,102 @@
+	Display the information in one table (either table is fine).
+
+SELECT * FROM teams;
+
+id|name|city|roster_size|made_playoffs|league_id
+1|Eagles|Philadelphia|90|false|2
+2|Redskins|Washington|86|true|2
+3|Bills|Buffalo|93|false|1
+4|Patriots|New England|89|true|1
+5|Giants|New York|91|false|2
+6|Panthers|Charlotte|88|true|1
+
+
+SELECT * FROM league;
+
+id|conference
+1|AFC
+2|NFC
+
+
+
+	Update an item that meets some condition (you can choose a condition that makes sense).
+
+UPDATE league SET conference ="American Football Conference" Where conference="AFC";
+
+UPDATE league SET conference ="National Football Conference" Where conference="NFC";
+
+SELECT * FROM league;
+id|conference
+1|American Football Conference
+2|National Football Conference
+
+
+
+
+
+	Display the information in both tables using one query.
+
+
+SELECT * FROM teams, league WHERE teams.league_id = league.id;
+
+id|name|city|roster_size|made_playoffs|league_id|id|conference
+1|Eagles|Philadelphia|90|false|2|2|National Football Conference
+2|Redskins|Washington|86|true|2|2|National Football Conference
+3|Bills|Buffalo|93|false|1|1|American Football Conference
+4|Patriots|New England|89|true|1|1|American Football Conference
+5|Giants|New York|91|false|2|2|National Football Conference
+6|Panthers|Charlotte|88|true|1|1|American Football Conference
+
+
+
+	Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+SELECT teams.city, teams.name, league.conference FROM teams JOIN league WHERE teams.league_id = league.id;
+
+city|name|conference
+Philadelphia|Eagles|National Football Conference
+Washington|Redskins|National Football Conference
+Buffalo|Bills|American Football Conference
+New England|Patriots|American Football Conference
+New York|Giants|National Football Conference
+Charlotte|Panthers|American Football Conference	
+
+
+
+
+	Delete an item that meets some condition (you can choose a condition that makes sense).
+
+DELETE FROM teams WHERE made_playoffs = "false";
+
+SELECT * FROM teams;
+
+id|name|city|roster_size|made_playoffs|league_id
+2|Redskins|Washington|86|true|2
+4|Patriots|New England|89|true|1
+6|Panthers|Charlotte|88|true|1
+
+
+	Try a few different joins in your database, and record the commands and the output in queries.txt.
+
+SELECT name, conference FROM teams INNER JOIN league ON teams.league_id = league.id;
+
+name|conference
+Redskins|National Football Conference
+Patriots|American Football Conference
+Panthers|American Football Conference
+
+
+SELECT name, city, conference FROM teams LEFT JOIN league ON teams.league_id = league.id;
+
+name|city|conference
+Redskins|Washington|National Football Conference
+Patriots|New England|American Football Conference
+Panthers|Charlotte|American Football Conference
+
+SELECT name, city, roster_size, conference FROM teams LEFT JOIN league ON teams.league_id = league.id WHERE roster_size > 87;
+
+name|city|roster_size|conference
+Patriots|New England|89|American Football Conference
+Panthers|Charlotte|88|American Football Conference
+
+
