@@ -84,9 +84,9 @@ def add_positions
 	puts "Please enter the position title you would liek to add to the Now Hiring list."
 	position = gets.chomp
 	puts "Please enter the hourly wage rate for this position."
-	wage = gets.chomp
+	wage = gets.chomp.to_i
 
-	@db.execute("INSERT INTO positions (positions_available) VALUES (?, ?)", [position, wage])
+	@db.execute("INSERT INTO positions (positions_available, hourly_wage) VALUES (?, ?)", [position, wage])
 	user_interface
 end
 
@@ -99,10 +99,10 @@ def list_of_applicants
 end
 
 def list_of_positions
-	posted_positions = @db.execute("SELECT positions_available FROM positions;")
+	posted_positions = @db.execute("SELECT * FROM positions;")
 	puts "--- Posted Positions---"
 	for i in 0...(posted_positions.length) do
-		puts "Position: #{posted_positions[i]["position"]} Wage: #{posted_positions[i]["hourly_wage"]}"
+		puts "Position: #{posted_positions[i]["positions_available"]} Hourly Wage: $#{posted_positions[i]["hourly_wage"]}"
 	end
 end
 
