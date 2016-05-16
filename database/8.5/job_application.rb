@@ -28,36 +28,50 @@ SQL
 @db.execute(create_positions_table)
 
 def user_interface
+	closing = puts "Thank you have a nice day!"
 	puts "Welcome to our company."
 	puts "Are you a manager or an applicant?"
-	puts "Type 1 for Mananger or 2 for Applicant."
+	puts "Type 1 for Mananger" 
+	puts "Type 2 for Applicant"
 	puts "Type 3 to Quit"
 	who_are_you = gets.chomp
-	
-	if who_are_you == "2"
+
+	if who_are_you == "1"
+		puts "What would you like to do?"
+		
+		loop do
+			puts "Type 1 to Enter positions available for hire"
+			puts "Type 2 to See a list of all applicants"
+			puts "Type 3 to See a list of all positions currently needed"
+			puts "Type 4 to Quit"
+			want_to_do = gets.chomp.to_i
+				if want_to_do == 1
+					add_positions	
+				elsif want_to_do == 2
+					list_of_applicants
+				elsif want_to_do == 3
+					list_of_positions
+				elsif want_to_do == 4
+					closing
+					break
+				end
+		end
+
+	elsif who_are_you == "2"
 		
 		puts "Would you like to apply for a position with us?"
+		puts "Type 1 for Yes"
+		puts "Type 2 for No"
 		apply = gets.chomp
-			if apply == "yes"
+			if apply == 1
 				puts "These are the positions we are currently looking to fill."
 				puts list_of_positions
 				add_applicant
+				closing
+				break
 			else
-				puts "Thank you have a nice day!"
-			end
-
-	elsif who_are_you == "1"
-		puts "What would you like to do?"
-		puts "1. Enter positions available for hire"
-		puts "2. See a list of all applicants"
-		puts "3. See a list of all positions currently needed."
-		want_to_do = gets.chomp.to_i
-			if want_to_do == 1
-				add_positions	
-			elsif want_to_do == 2
-				list_of_applicants
-			elsif want_to_do == 3
-				list_of_positions
+				closing
+				break
 			end
 	end
 
@@ -84,9 +98,9 @@ def add_positions
 	puts "Please enter the position title you would liek to add to the Now Hiring list."
 	position = gets.chomp
 	puts "Please enter the hourly wage rate for this position."
-	wage = gets.chomp
+	wage = gets.chomp.to_i
 
-	@db.execute("INSERT INTO positions (positions_available) VALUES (?, ?)", [position, wage])
+	@db.execute("INSERT INTO positions (positions_available, hourly_wage) VALUES (?, ?)", [position, wage])
 	user_interface
 end
 
@@ -99,10 +113,10 @@ def list_of_applicants
 end
 
 def list_of_positions
-	posted_positions = @db.execute("SELECT positions_available FROM positions;")
+	posted_positions = @db.execute("SELECT * FROM positions;")
 	puts "--- Posted Positions---"
 	for i in 0...(posted_positions.length) do
-		puts "Position: #{posted_positions[i]["position"]} Wage: #{posted_positions[i]["hourly_wage"]}"
+		puts "Position: #{posted_positions[i]["positions_available"]} Hourly Wage: $#{posted_positions[i]["hourly_wage"]}"
 	end
 end
 
