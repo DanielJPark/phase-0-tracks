@@ -28,7 +28,7 @@ SQL
 @db.execute(create_positions_table)
 
 def user_interface
-	closing = puts "Thank you have a nice day!"
+	closing = "Thank you have a nice day!"
 	puts "Welcome to our company."
 	puts "Are you a manager or an applicant?"
 	puts "Type 1 for Mananger" 
@@ -37,42 +37,46 @@ def user_interface
 	who_are_you = gets.chomp
 
 	if who_are_you == "1"
-		puts "What would you like to do?"
-		
 		loop do
+		puts ""
+		puts "What would you like to do?"
+		puts ""
 			puts "Type 1 to Enter positions available for hire"
 			puts "Type 2 to See a list of all applicants"
 			puts "Type 3 to See a list of all positions currently needed"
 			puts "Type 4 to Quit"
-			want_to_do = gets.chomp.to_i
-				if want_to_do == 1
+			want_to_do = gets.chomp
+				if want_to_do == "1"
 					add_positions	
-				elsif want_to_do == 2
+				elsif want_to_do == "2"
 					list_of_applicants
-				elsif want_to_do == 3
+				elsif want_to_do == "3"
 					list_of_positions
-				elsif want_to_do == 4
-					closing
+				elsif want_to_do == "4"
+					puts closing
 					break
 				end
 		end
 
 	elsif who_are_you == "2"
 		
+		
 		puts "Would you like to apply for a position with us?"
 		puts "Type 1 for Yes"
 		puts "Type 2 for No"
 		apply = gets.chomp
-			if apply == 1
+			if apply == "1"
+				puts ""
 				puts "These are the positions we are currently looking to fill."
-				puts list_of_positions
+				list_of_positions
 				add_applicant
-				closing
-				break
+				puts closing
 			else
-				closing
-				break
+				puts closing
 			end
+	else
+		puts closing
+		
 	end
 
 end
@@ -91,7 +95,6 @@ def add_applicant
 
 
 	@db.execute("INSERT INTO applicants (applicant_name, applicant_age, position_desired) VALUES (?, ?, ?)" , [name, age, position])
-	user_interface
 end
 
 def add_positions
@@ -101,7 +104,6 @@ def add_positions
 	wage = gets.chomp.to_i
 
 	@db.execute("INSERT INTO positions (positions_available, hourly_wage) VALUES (?, ?)", [position, wage])
-	user_interface
 end
 
 def list_of_applicants
