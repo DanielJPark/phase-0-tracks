@@ -12,5 +12,15 @@
       <li><%= student['name'] %>, <%= student['age'] %></li>
     <% end %>
   </ul>
+
+
+  <h2> Requested Cities </h2>
+  <ul>
+    <% @requested_campuses.each do |request| %>
+      <li><%= request['name'] %>, <%= request['city'] %></li>
+    <% end %>
+  </ul>
+
+
 </body>
 </html>
