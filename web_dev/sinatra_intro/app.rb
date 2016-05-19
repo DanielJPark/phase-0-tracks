@@ -48,15 +48,19 @@ end
 # Release 0
 
 get '/contact' do
-  "123 Sesame Street Anytown, Anystate 09876"
+  "123 Sesame Street Anytown, Anystate 09876-"
 end
 
-get 'great_job/' do
+get '/great_job/' do
   name = params[:name]
   if name
-    "Great Job #{name}!"
+    "Good Job #{name}!"
   else
-    "Great Job!"
+    "Good Job!"
   end
 end
-name 
+
+get '/:numb1/add/:numb2' do
+  total = params[:numb1].to_i + params[:numb2].to_i
+  total.to_s
+end
