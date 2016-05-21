@@ -64,3 +64,17 @@ get '/:numb1/add/:numb2' do
   total = params[:numb1].to_i + params[:numb2].to_i
   total.to_s
 end
+
+
+#return students under a certain age
+
+get '/younger/:age' do
+  student = db.execute("SELECT * FROM students WHERE age < ?", params[:age])
+  response = ""
+  student.each do |student|
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+  end
+  response
+end
+
